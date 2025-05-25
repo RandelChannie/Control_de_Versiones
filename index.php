@@ -6,6 +6,6 @@ if(isset($_GET['m'])):
 		modeloController:: {$_GET['m']}(); 
 	endif; 
 else: 
-	modeloController::index(); //hhjfdvfgjh
+	modeloController::index(); //hhjfdvfgjhvdfbfdbf
 endif;
 ?>
