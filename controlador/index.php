@@ -16,5 +16,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 if (isset($_GET["eliminar"])) {
     $producto->eliminar($_GET["eliminar"]);
     header("Location: index.php");
-}//prueba
+}
 ?>
