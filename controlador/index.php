@@ -1,35 +1,61 @@
 <?php
-    require_once("layouts/header.php");
-?>
-<a href="index.php?m=nuevo" class="btn">NEVO</a>
+require_once("modelo/index.php");
 
-<table>
-    <t>
-      <td>ID</td>
-      <td>NOMBRE</td>
-      <td>ACCION</td>
-    </t>
-    <tboody>
-        <?php 
-            if(!empty($dato)):
-                foreanch($dato as $key => $value)
-                  foreanch($value as $v):?>
-                  <tr>
-                      <td>?php echo $v['id']?></td>
-                      <td>?php echo $v['nombre']?></td>
-                      <td>
-                         <a class="btn" href="index.php?m=editar&id=<?php echo $v['id']?>">editar</a>
-                         <a class="btn" href="index.php?m=eliminar&id=<?php echo $v['id']?>" onclick="return confirm('ESTAS SEGURO'); false">ELIMINAR</a>
-                      </td>
-                  </tr>
-                  <?php endforeach; ?>
-            <?php else; ?>
-                  <tr>
-                    <td colspan="3">NO HAY REGISTROS</td>
-                  </tr>
-            <?php endif ?>
-    </tboody>
-</table>
-<?php
-  requiere_once("layouts/footer.php");
-?>
+class modelController {
+    // Attributes do in class
+    private $model;
+    
+    public function __construct() {
+        $this->model = new Modelo();
+    }
+    
+    // mostrar
+    static function index() {
+        $producto = new Modelo();
+        $data = $producto->mostrar("products", "1");
+        require_once("vista/index.php");
+    }
+    
+    // nuevo
+    static function nuevo() {
+        require_once("vistas/nuevo.php");
+    }
+    
+    // guardar
+    static function guardar() {
+        $nombre = $_REQUEST['nombre'];
+        $precio = $_REQUEST['precio'];
+        $data = "'".$nombre."','".$precio."'";
+        $producto = new Modelo();
+        $data = $producto->insertar("products", $data);
+        header("location:".urlsite);
+    }
+    
+    // editar
+    static function editar() {
+        $id = $_REQUEST['id'];
+        $producto = new Modelo();
+        $data = $producto->mostrar("products", "id=".$id);
+        require_once("vistas/editar.php");
+    }
+    
+    // actualizar
+    static function actualizar() {
+        $id = $_REQUEST['id'];
+        $nombre = $_REQUEST['nombre'];
+        $precio = $_REQUEST['precio'];
+        $data = "nombre='".$nombre."', precio=".$precio;
+        $producto = new Modelo();
+        $data = $producto->actualizar("products", $data, "id=".$id);
+        header("location:".urlsite);
+    }
+    
+    // eliminar
+    static function eliminar() {
+        $id = $_REQUEST['id'];
+        $producto = new Modelo();
+        $data = $producto->eliminar("products", "id=".$id);
+        header("location:".urlsite);
+    }
+}
+//
