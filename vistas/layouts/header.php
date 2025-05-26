@@ -8,6 +8,6 @@
     <link rel="stylesheet" href="vista/css/app.css"> 
 </head> 
 <body> 
-<div class="panel"> 
-<h1 class="text-center">SISTEMA DE PRODUCTOS</h1> 
+    <div class="panel"> 
+        <h1 class="text-center">SISTEMA DE PRODUCTOS</h1> 
 <!-- contenido-->

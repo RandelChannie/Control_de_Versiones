@@ -1,0 +1,31 @@
+# Archivos de base de datos exportados
+base de datos/*.sql
+*.sql
+
+# Archivos de configuración sensibles
+.env
+*.log
+
+# Archivos temporales o de respaldo
+*.tmp
+*.bak
+*.swp
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Configuraciones de IDEs/editors
+.vscode/
+.idea/
+
+# Directorios de dependencias (por si usas Composer o Node.js más adelante)
+vendor/
+node_modules/
+
+# Archivos de sesión/caché si se llegaran a usar
+sessions/
+cache/
+
+# Archivo de conexión con credenciales locales (opcional según política de tu equipo)
+conexion/conexion.php
